@@ -1,6 +1,6 @@
 require 'amazon-ses'
 require 'logger'
-require 'variables'
+require_relative 'variables'
 
 file = ARGV[0]
 
