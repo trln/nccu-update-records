@@ -6,7 +6,6 @@ current_date = Time.now.strftime("%d-%m-%Y-%H")
 
 if File.exist?("#{path}/update-#{current_date}.xml")
   system "ruby cleanup_and_validate.rb #{path}/update-#{current_date}.xml"
-  File.rename("#{path}/update-#{current_date}.xml", "#{path}/update-#{current_date}.xml")
   puts "Clean up Done!"
 
   if File.exist?("#{path}/update-#{current_date}-clean.xml")

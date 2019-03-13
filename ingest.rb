@@ -3,7 +3,14 @@ reqire 'variables'
 file = ARGV[0]
 
 puts "Processing #{file}..."
-system "spofford ingest #{file}.json"
-puts "Done!"
+output = system "spofford ingest #{file}.json"
+
+if output == false
+  log = Logger.new("/home/ec2-user/log/log-ingest-#{current_date}.txt",  "monthly")
+  subject = "NCCU: Ingest error"
+  message = "#{file}.json file produced an ingest error."
+  log.error message
+  send_email(subject, message)
+end 
 
 

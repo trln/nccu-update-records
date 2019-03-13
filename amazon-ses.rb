@@ -1,6 +1,6 @@
 require 'aws-sdk'
 
-def send_email(error, backtrace)
+def send_email(subject, error_message)
   sender = "admin@trln.org"
   recipient = "genia@trln.org"
 
@@ -10,9 +10,9 @@ def send_email(error, backtrace)
   #configsetname = "ConfigSet"
     
   awsregion = "us-east-2"
-  subject = "Marc to Argot or Spofford Errors"
+  #subject = "Marc to Argot or Spofford Errors"
  
-  textbody = "This email was sent to notify about the Marc-to-Argot errors. Error: #{error}, Backtrace: #{backtrace}"
+  textbody = "This email was sent to notify that #{error_message}. You need to log in to aws console via ssh and manually debug the error."
 
   # Specify the text encoding scheme.
   encoding = "UTF-8"
