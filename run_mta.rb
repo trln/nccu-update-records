@@ -1,4 +1,3 @@
-require 'amazon-ses'
 require 'logger'
 
 path = "/home/ec2-user/data/update"
