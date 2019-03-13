@@ -32,10 +32,6 @@ def send_email(subject, error_message)
       },
       message: {
         body: {
-          html: {
-            charset: encoding,
-            data: htmlbody,
-          },
           text: {
             charset: encoding,
             data: textbody,
