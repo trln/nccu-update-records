@@ -1,4 +1,4 @@
-reqire 'variables'
+require 'variables'
 
 file = ARGV[0]
 
