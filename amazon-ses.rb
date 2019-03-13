@@ -9,7 +9,7 @@ def send_email(subject, error_message)
   # configuration_set_name: configsetname argument below. 
   #configsetname = "ConfigSet"
     
-  awsregion = "us-east-2"
+  awsregion = "us-east-1a"
   #subject = "Marc to Argot or Spofford Errors"
  
   textbody = "This email was sent to notify that #{error_message}. You need to log in to aws console via ssh and manually debug the error."
