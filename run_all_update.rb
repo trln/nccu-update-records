@@ -1,5 +1,6 @@
 #run this file every hour
-load 'variables.rb'
+path = "/home/ec2-user/data/update"
+current_date = Time.now.strftime("%d-%m-%Y-%H")
 
 if File.exist?("#{path}/update-#{current_date}.xml")
   system "ruby cleanup_and_validate.rb #{path}/update-#{current_date}.xml"
