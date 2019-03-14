@@ -1,4 +1,4 @@
-require_relative 'variables'
+include 'variables'
 
 file = ARGV[0]
 

@@ -1,5 +1,5 @@
 require 'logger'
-require_relative 'variables'
+load 'variables.rb'
 
 file = ARGV[0]
 
