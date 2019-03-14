@@ -7,7 +7,7 @@ current_date = Time.now.strftime("%d-%m-%Y-%H")
 file = ARGV[0]
 
 puts "Processing #{file}..."
-output = system "spofford ingest #{file}.json"
+output = system "spofford ingest #{file}"
 
 if output == false
   log = Logger.new("/home/ec2-user/log/log-ingest-#{current_date}.txt",  "monthly")
