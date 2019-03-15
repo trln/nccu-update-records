@@ -3,7 +3,7 @@ file = ARGV[0]
 
 puts "Processing #{file}..."
 
-system "ruby xml_cleanup.rb #{file} > #{VARIABLES::PATH}/update-#{VARIABLES::CURRENT_DATE}-better.xml"
-system "xmllint --recover #{VARIABLES::PATH}/update-#{VARIABLES::CURRENT_DATE}-better.xml > #{VARIABLES::PATH}/update-#{VARIABLES::CURRENT_DATE}-clean.xml"
+system "ruby xml_cleanup.rb #{file} > #{Variables::PATH}/update-#{Variables::CURRENT_DATE}-better.xml"
+system "xmllint --recover #{Variables::PATH}/update-#{Variables::CURRENT_DATE}-better.xml > #{Variables::PATH}/update-#{Variables::CURRENT_DATE}-clean.xml"
 
 puts "Done!"
