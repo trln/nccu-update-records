@@ -1,6 +1,6 @@
 require 'logger'
 require_relative 'amazon-ses'
-require_relative 'variables'
+require './variables.rb'
 
 file = ARGV[0]
 
