@@ -1,4 +1,4 @@
-require 'variables'
+require_relative 'variables'
 file = ARGV[0]
 
 puts "Processing #{file}..."

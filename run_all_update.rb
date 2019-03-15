@@ -1,5 +1,5 @@
 #run this file every hour
-require 'variables'
+require_relative 'variables'
 
 if File.exist?("#{VARIABLES::PATH}/update-#{VARIABLES::CURRENT_DATE}.xml")
   system "ruby cleanup_and_validate.rb #{VARIABLES::PATH}/update-#{VARIABLES::CURRENT_DATE}.xml"
