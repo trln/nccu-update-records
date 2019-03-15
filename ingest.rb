@@ -10,11 +10,9 @@ puts "Processing #{file}..."
 output = system "spofford ingest #{file}"
 
 if output == false
-  log = Logger.new("/home/ec2-user/log/log-ingest-#{current_date}.txt",  "monthly")
+  error = File.read("/home/ec2-user/nccu-update-records.error.log")
+  file_content = File.read("#{file}")
   subject = "NCCU: Ingest error"
-  message = "#{file} file produced an ingest error"
-  log.error message
+  message = "#{file} file produced an ingest error. \n \n Error: \n \n #{error}. \n \n File: \n \n #{file_content}."
   send_email(subject, message)
-end 
-
-
+end
