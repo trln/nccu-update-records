@@ -11,7 +11,7 @@ output = system "../marc-to-argot/exe/mta create -t xml nccu #{file} #{path}/add
 if output == false
   error = File.read("/home/ec2-user/nccu-update-records/error.log")
   subject = "NCCU: Marc-to-argot error"
-  message = "#{file} file produced a marc-to-argot error. \n \n Error: \n \n #{error}. \n \n"
+  message = "#{file} file produced a marc-to-argot error: \n \n \n \n #{error}. \n \n"
   send_email(subject, message)
 end  
 
