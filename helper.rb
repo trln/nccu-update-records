@@ -18,7 +18,7 @@ module Helper
     recipient = "genia@trln.org"
     
     awsregion = "us-east-1"
-    textbody = "This email was sent to notify that #{error_message}. Perhaps you need to log in to aws console via ssh and manually debug the error."
+    textbody = "This email was sent to notify that #{error_message}. \n \n \n \n Perhaps you need to log in to aws console via ssh and manually debug the error."
     encoding = "UTF-8"
 
     # Create a new SES resource and specify a region
