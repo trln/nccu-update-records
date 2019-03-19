@@ -1,8 +1,9 @@
 require 'aws-sdk'
 
 module Helper
-  PATH = "/home/ec2-user/data/update"
-  CURRENT_DATE = Time.now.strftime("%d-%m-%Y-%H")
+  PATH = "/home/ec2-user/data"
+  FILE_TO_UPDATE = Time.now.strftime("%d-%m-%Y-%H")
+  FILE_TO_DELETE = Time.now.strftime("%d-%m-%Y")
 
   def self.notify_about_errors(output, app, file)
     if output == false

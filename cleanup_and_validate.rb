@@ -3,12 +3,12 @@ file = ARGV[0]
 
 puts "Processing #{file}..."
 
-cleanup_output = system "ruby xml_cleanup.rb #{file} > #{Helper::PATH}/update-#{Helper::CURRENT_DATE}-better.xml 2>error.log"
+cleanup_output = system "ruby xml_cleanup.rb #{file} > #{Helper::PATH}/update/update-#{Helper::CURRENT_DATE_TO_UPDATE}-better.xml 2>error.log"
 
 Helper.notify_about_errors(cleanup_output, subject = "XML Cleanup", file)
 
 if cleanup_output == true
-  recovery_output = system "xmllint --recover #{Helper::PATH}/update-#{Helper::CURRENT_DATE}-better.xml > #{Helper::PATH}/update-#{Helper::CURRENT_DATE}-clean.xml 2>error.log"
+  recovery_output = system "xmllint --recover #{Helper::PATH}/update/update-#{Helper::CURRENT_DATE_TO_UPDATE}-better.xml > #{Helper::PATH}/update/update-#{Helper::CURRENT_DATE_TO_UPDATE}-clean.xml 2>error.log"
   Helper.notify_about_errors(recovery_output, subject = "XML Recover", file)
 end  
 
