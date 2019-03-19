@@ -8,7 +8,7 @@ module Helper
     if output == false
       error = File.read("/home/ec2-user/nccu-update-records/error.log")
       subject = "NCCU: #{app} error"
-      message = "#{file} file produced a/an #{app} error: \n \n \n \n Error: #{error}."
+      message = "#{file} file produced an error:\n\nError: #{error}."
       send_email(subject, message)
     end
   end
@@ -18,7 +18,7 @@ module Helper
     recipient = "genia@trln.org"
     
     awsregion = "us-east-1"
-    textbody = "This email was sent to notify that #{error_message}. \n \n \n \n Perhaps you need to log in to aws console via ssh and manually debug the error."
+    textbody = "This email was sent to notify that #{error_message}.\n\nPerhaps you need to log in to aws console via ssh and manually debug the error."
     encoding = "UTF-8"
 
     # Create a new SES resource and specify a region
