@@ -8,7 +8,7 @@ module Helper
     if output == false
       error = File.read("/home/ec2-user/nccu-update-records/error.log")
       subject = "NCCU: #{app} error"
-      message = "#{file} file produced a #{app} error: \n \n \n \n #{error}. \n \n"
+      message = "#{file} file produced a/an #{app} error: \n \n Error: #{error}. \n \n"
       send_email(subject, message)
     end
   end
