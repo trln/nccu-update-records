@@ -1,4 +1,4 @@
-require './variables.rb'
+require './helper.rb'
 file = ARGV[0]
 
 puts "Processing #{file}..."
