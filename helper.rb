@@ -16,7 +16,7 @@ module Helper
 
   def self.send_email(subject, error_message)
     sender = "admin@trln.org"
-    recipient = "genia@trln.org"
+    recipient = "evgeniia.kazymova@duke.edu"
     
     awsregion = "us-east-1"
     textbody = "This email was sent to notify that #{error_message}.\n\nPerhaps you need to log in to aws via ssh and manually debug the error."

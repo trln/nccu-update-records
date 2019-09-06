@@ -1,11 +1,11 @@
 #run every hour
 require './helper.rb'
 
-if File.exist?("#{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}.xml")
-  system "ruby cleanup_and_validate.rb #{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}.xml"
-  puts "Clean up Done!"
+if File.exist?("#{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}.mrc")
+  #system "ruby cleanup_and_validate.rb #{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}.xml"
+  #puts "Clean up Done!"
 
-  if File.exist?("#{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}-clean.xml")
+  #if File.exist?("#{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}-clean.xml")
     system "ruby marc_to_argot.rb #{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}-clean.xml"
     puts "MTA Done!"
     
