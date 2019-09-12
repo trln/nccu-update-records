@@ -1,4 +1,4 @@
-#run every hour
+#run once a day
 require './helper.rb'
 
 if File.exist?("#{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}.mrc")
