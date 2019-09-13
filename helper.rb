@@ -8,7 +8,7 @@ module Helper
   def self.notify_about_errors(output, app, file)
     if output == false
       error = File.read("/home/ec2-user/nccu-update-records/error.log")
-      subject = "NCCU: #{app} error"
+      subject = "NCCU automated updates: #{app} error"
       message = "#{file} file produced an error.\n\nError: #{error}."
       send_email(subject, message)
     end
@@ -49,7 +49,7 @@ module Helper
         },
       source: sender,
       })
-      puts "Email sent!"
+      puts "Email with the error sent!"
 
     # If something goes wrong, display an error message.
     rescue Aws::SES::Errors::ServiceError => error

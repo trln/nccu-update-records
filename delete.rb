@@ -10,7 +10,8 @@ if File.exist?(delete_path)
   File.open(delete_path, "w") {|file| file.puts replace}
   
   output = system "spofford ingest #{delete_path} out>error.log"
+  puts "Processing file #{delete_path}"
   Helper.notify_about_errors(output, subject = "Delete documents error", delete_path)
 else
-	puts "Nothing to delete."  
+  puts "Nothing to delete."  
 end
