@@ -2,20 +2,25 @@
 require './helper.rb'
 
 if File.exist?("#{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}.mrc")
-  #system "ruby cleanup_and_validate.rb #{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}.xml"
-  #puts "Clean up Done!"
+  system "yaz-marcdump -f MARC-8 -t UTF-8 -o marcxml update-#{Helper::FILE_TO_UPDATE}.mrc >update-#{Helper::FILE_TO_UPDATE}.xml"
+  puts "Converted to MARCXML."
 
-  #if File.exist?("#{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}-clean.xml")
-    #system "ruby marc_to_argot.rb #{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}-clean.xml"
-    system "ruby marc_to_argot.rb #{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}.mrc"
+  if File.exist?("#{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}.xml")
+    system "ruby cleanup_and_validate.rb #{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}.xml"
+    puts "Clean up Done!"
 
-    puts "MTA Done!"
+    if File.exist?("#{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}-clean.xml")
+      system "ruby marc_to_argot.rb #{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}-clean.xml"
+      #system "ruby marc_to_argot.rb #{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}.mrc"
+
+      puts "MTA Done!"
     
-    if File.exist?("#{Helper::PATH}/update/add-#{Helper::FILE_TO_UPDATE}.json")
-      system "ruby ingest.rb #{Helper::PATH}/update/add-#{Helper::FILE_TO_UPDATE}.json"
-      puts "Ingest Done!"
+      if File.exist?("#{Helper::PATH}/update/add-#{Helper::FILE_TO_UPDATE}.json")
+        system "ruby ingest.rb #{Helper::PATH}/update/add-#{Helper::FILE_TO_UPDATE}.json"
+        puts "Ingest Done!"
+      end
     end
-  #end
+  end  
 else
   puts "Nothing to update."      
 end
