@@ -1,4 +1,4 @@
-require './helper.rb'
+require_relative "./helper.rb"
 
 file = ARGV[0]
 
