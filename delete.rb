@@ -1,5 +1,5 @@
 #run once a day
-require './helper.rb'
+require_relative "./helper.rb"
 
 delete_path = "#{Helper::PATH}/delete/delete-#{Helper::FILE_TO_DELETE}.json"
 

@@ -1,5 +1,5 @@
 #run once a day
-require './helper.rb'
+require_relative "./helper.rb"
 
 if File.exist?("#{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}.mrc")
   #system "yaz-marcdump -f MARC-8 -t UTF-8 -o marcxml #{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}.mrc >#{Helper::PATH}/update/update-#{Helper::FILE_TO_UPDATE}.xml"
