@@ -1,7 +1,7 @@
 require 'aws-sdk'
 
 module Helper
-  PATH = "/home/ec2-user/data"
+  PATH = "/home/ec2-user/"
   FILE_TO_UPDATE = Time.now.strftime("%m-%d-%Y")
   FILE_TO_DELETE = Time.now.strftime("%m-%d-%Y")
 
