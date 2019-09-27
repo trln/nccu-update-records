@@ -3,7 +3,7 @@ require_relative "./helper.rb"
 file = ARGV[0]
 
 puts "Processing #{file}..."
-
+puts system "pwd"
 output = system "spofford ingest #{file}"
 
 puts output
