@@ -11,17 +11,12 @@ if File.exist?("#{Helper::PATH}/data/update/update-#{Helper::FILE_TO_UPDATE}.mrc
 
     #if File.exist?("#{Helper::PATH}/data/update/update-#{Helper::FILE_TO_UPDATE}-clean.xml")
       #system "ruby marc_to_argot.rb #{Helper::PATH}/data/update/update-#{Helper::FILE_TO_UPDATE}-clean.xml"
-      system "ruby nccu-update-records/marc_to_argot.rb #{Helper::PATH}/data/update/update-#{Helper::FILE_TO_UPDATE}.mrc"
-
-      puts "MTA Done!"
+      system "ruby #{Helper::PATH}/nccu-update-records/marc_to_argot.rb #{Helper::PATH}/data/update/update-#{Helper::FILE_TO_UPDATE}.mrc"
     
       if File.exist?("#{Helper::PATH}/data/update/add-#{Helper::FILE_TO_UPDATE}.json")
-        system "ruby nccu-update-records/ingest.rb #{Helper::PATH}/data/update/add-#{Helper::FILE_TO_UPDATE}.json"
-        puts "Ingest Done!"
+        system "ruby #{Helper::PATH}/nccu-update-records/ingest.rb #{Helper::PATH}/data/update/add-#{Helper::FILE_TO_UPDATE}.json"
       end
     #end
-  #end  
-else
-  puts "Nothing to update."      
+  #end       
 end
 
