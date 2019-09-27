@@ -3,9 +3,9 @@ require_relative "./helper.rb"
 file = ARGV[0]
 
 puts "Processing #{file}..."
-output = system "../marc-to-argot/exe/mta create -t binary nccu #{file} #{Helper::PATH}/update/add-#{Helper::FILE_TO_UPDATE}.json 2>error.log"
+system "../marc-to-argot/exe/mta create -t binary nccu #{file} #{Helper::PATH}/update/add-#{Helper::FILE_TO_UPDATE}.json"
 
-Helper.notify_about_errors(output, subject = "Marc-to-argot", file)
+#Helper.notify_about_errors(output, subject = "Marc-to-argot", file)
 
-puts "Done!" 
+#puts "Done!" 
 
