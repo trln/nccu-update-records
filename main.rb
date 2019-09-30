@@ -14,6 +14,7 @@ if File.exist?("#{Helper::PATH}/data/update/update-#{Helper::FILE_TO_UPDATE}.mrc
       system "ruby #{Helper::PATH}/nccu-update-records/marc_to_argot.rb #{Helper::PATH}/data/update/update-#{Helper::FILE_TO_UPDATE}.mrc"
     
       if File.exist?("#{Helper::PATH}/data/update/add-#{Helper::FILE_TO_UPDATE}.json")
+        puts "Ingest is coming ..."
         system "ruby #{Helper::PATH}/nccu-update-records/ingest.rb #{Helper::PATH}/data/update/add-#{Helper::FILE_TO_UPDATE}.json"
       end
     #end
