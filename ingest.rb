@@ -4,7 +4,7 @@ file = ARGV[0]
 
 puts "Processing #{file}..."
 puts system "pwd"
-output = system "spofford ingest #{file}"
+output = system "spofford ingest --config=/home/ec2-user/.spofford-client.yml #{file}"
 
 puts output
 puts "Ingest done!"
