@@ -6,12 +6,12 @@ module Helper
   FILE_TO_DELETE = Time.now.strftime("%m-%d-%Y")
 
   def self.notify_about_errors(output, app, file)
-    if output == false
+    #if output == false
       #error = File.read("/home/ec2-user/nccu-update-records/error.log")
       subject = "NCCU #{app} log"
       message = "Below is the #{app} log: \n\n#{output}"
       send_email(subject, message)
-    end
+    #end
   end
 
   def self.send_email(subject, error_message)
