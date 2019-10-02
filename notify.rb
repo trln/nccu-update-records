@@ -8,14 +8,15 @@ file_to_delete = "#{Helper::PATH}/data/delete/delete-#{Helper::FILE_TO_DELETE}.j
 
 processes = ["update", "delete"]
 
+def create_message(process)
+	if File.exists?("#{process}_log_path")
+	  contents = File.read("#{process}_log_path")
+	  return "Below is the NCCU #{process} log: \n\n #{contents}. \n\n If you see any errors in this log, you need to log in to aws via ssh and debug the errors."
+    end
+end
+
 for i in processes do
   message = create_message(i)
   Helper.send_email(subject = "NCCU #{i} log", message)
 end
 
-def create_message(process)
-	if File.exists?("#{process}_log_path")
-	  contents = File.read("#{process}_log_path")
-	  message = "Below is the NCCU #{process} log: \n\n #{contents}. \n\n If you see any errors in this log, you need to log in to aws via ssh and debug the errors."
-    end
-end
