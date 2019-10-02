@@ -20,7 +20,6 @@ if File.exist?("#{Helper::PATH}/data/update/update-#{Helper::FILE_TO_UPDATE}.mrc
     #end
   #end
 else
-else
   puts "Nothing to update."          
 end
 
