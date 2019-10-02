@@ -11,7 +11,7 @@ processes = {"update" => UPDATE_LOG_PATH, "delete" => DELETE_LOG_PATH}
 def create_message(process, path)
 	if File.exists?(path)
 	  contents = File.read(path)
-	  return "Below is the NCCU #{process} log.\n\n If you see any errors in this log, you need to log in to aws via ssh and debug the errors.\n\n #{contents}."
+	  return "This email contains the NCCU #{process} log from #{path} file.\n\n If you see any errors in this log, you need to log in to aws via ssh and debug the errors.\n\n Here is the log: \n\n#{contents}."
     end
 end
 
