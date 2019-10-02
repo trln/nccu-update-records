@@ -40,7 +40,7 @@ module Helper
         },
       source: sender,
       })
-      puts "Email with the error sent!"
+      puts "Email sent!"
 
     # If something goes wrong, display an error message.
     rescue Aws::SES::Errors::ServiceError => error
