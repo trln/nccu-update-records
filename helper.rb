@@ -7,9 +7,9 @@ module Helper
 
   def self.notify_about_errors(output, app, file)
     if output == false
-      error = File.read("/home/ec2-user/nccu-update-records/error.log")
-      subject = "NCCU automated updates: #{app} error"
-      message = "#{file} file produced an error.\n\nError: #{error}."
+      #error = File.read("/home/ec2-user/nccu-update-records/error.log")
+      subject = "NCCU #{app} log"
+      message = "Below is the #{app} log: \n\n#{output}"
       send_email(subject, message)
     end
   end
