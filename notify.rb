@@ -11,17 +11,12 @@ processes = {"update" => UPDATE_LOG_PATH, "delete" => DELETE_LOG_PATH}
 def create_message(process, path)
 	if File.exists?(path)
 	  contents = File.read(path)
-	  return "Below is the NCCU #{process} log: \n\n #{contents}. \n\n If you see any errors in this log, you need to log in to aws via ssh and debug the errors."
+	  return "Below is the NCCU #{process} log.\n\n If you see any errors in this log, you need to log in to aws via ssh and debug the errors.\n\n #{contents}."
     end
 end
 
-
 processes.each do |key, value|
-  puts "Key: #{key}"
   message = create_message(key, value)
   Helper.send_email(subject = "NCCU #{key} log", message)
-end
-for i in processes do
-  
 end
 
