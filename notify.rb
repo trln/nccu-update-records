@@ -16,7 +16,7 @@ def create_message(process, path)
 end
 
 
-processes.each_key do |key, value|
+processes.each do |key, value|
   puts "Key: #{key}"
   message = create_message(key, value)
   Helper.send_email(subject = "NCCU #{key} log", message)
