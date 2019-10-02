@@ -18,6 +18,9 @@ if File.exist?("#{Helper::PATH}/data/update/update-#{Helper::FILE_TO_UPDATE}.mrc
         system "ruby #{Helper::PATH}/nccu-update-records/ingest.rb #{Helper::PATH}/data/update/add-#{Helper::FILE_TO_UPDATE}.json"
       end
     #end
-  #end       
+  #end
+else
+else
+  puts "Nothing to update."          
 end
 
