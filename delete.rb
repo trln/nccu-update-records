@@ -10,7 +10,7 @@ if File.exist?(delete_path)
   File.open(delete_path, "w") {|file| file.puts replace}
   
   puts "Processing file #{delete_path}"
-  output = "curl -v -H'Content-Type: application/json' -H'X-User-Email: genia@trln.org' -H'X-User-Token: sdjSYp8tQ8x-ZNBSHjbj' --data-binary @#{delete_path} https://ingest.discovery.trln.org/ingest/nccu"
+  system "curl -v -H'Content-Type: application/json' -H'X-User-Email: genia@trln.org' -H'X-User-Token: sdjSYp8tQ8x-ZNBSHjbj' --data-binary @#{delete_path} https://ingest.discovery.trln.org/ingest/nccu"
   #output = system "spofford ingest #{delete_path}" #spofford ingest didn't work via cron
 else
   puts "Nothing to delete."  
