@@ -34,7 +34,7 @@ module Helper
 
     # Create a new MIME text object that contains the base64-encoded content of the
     # file that will be attached to the message.
-    file = MIME::Application.new(Base64::encode64(open(attachment,"mrc").read))
+    file = MIME::Application.new(Base64::encode64(open(attachment).read))
 
     # Specify that the file is a base64-encoded attachment to ensure that the 
     # receiving client handles it correctly. 
