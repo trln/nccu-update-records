@@ -20,7 +20,7 @@ module Helper
     configsetname = "ConfigSet"
    
     # Replace us-west-2 with the AWS Region you're using for Amazon SES.
-    awsregion = "us-east-1-2"
+    awsregion = "us-east-1"
 
     # The subject line for the email.
     #subject = "Updates"
