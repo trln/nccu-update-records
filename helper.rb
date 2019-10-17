@@ -10,7 +10,7 @@ module Helper
   def self.send_email(subject, message)
     # This address must be verified with Amazon SES.
     sender = "admin@trln.org"
-    endername = "TRLN Admin"
+    sendername = "TRLN Admin"
 
     # Replace recipient@example.com with a "To" address. If your account 
     # is still in the sandbox, this address must be verified.
