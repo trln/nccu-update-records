@@ -45,8 +45,6 @@ module Helper
         data: msg.to_s
       }
     })
-    # If the message was sent, show the message ID.
-    puts "Email sent! Message ID: " + resp[0].to_s
  
     # If the message was not sent, show a message explaining what went wrong.
     rescue Aws::SES::Errors::ServiceError => error
