@@ -17,6 +17,12 @@ end
 
 processes.each do |key, value|
   message = create_message(key, value)
-  Helper.send_email(subject = "NCCU #{key} log", message)
+  case key
+    when "update"
+      attachment = "#{Helper::PATH}/data/update/add-#{Helper::FILE_TO_UPDATE}.json"
+    when "delete"
+      attachment = "#{Helper::PATH}/data/delete/delete-#{Helper::FILE_TO_DELETE}.json"
+    end
+  Helper.send_email(subject = "NCCU #{key} log", message, attachment)
 end
 

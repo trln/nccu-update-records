@@ -7,7 +7,7 @@ module Helper
   FILE_TO_UPDATE = Time.now.strftime("%m-%d-%Y")
   FILE_TO_DELETE = Time.now.strftime("%m-%d-%Y")
   
-  def self.send_email(subject, message)
+  def self.send_email(subject, message, attachment)
     # This address must be verified with Amazon SES.
     sender = "admin@trln.org"
     sendername = "TRLN Admin"
@@ -26,7 +26,7 @@ module Helper
     #subject = "Updates"
 
     # The full path to the file that will be attached to the email.
-    attachment = "/home/ec2-user/data/update/update-10-17-2019.mrc"
+    #attachment = "/home/ec2-user/data/update/update-10-17-2019.mrc"
 
     # The email body for recipients with non-HTML email clients.  
     textbody = "#{message}"
@@ -54,7 +54,7 @@ module Helper
 
 
     # Add the Multipart Alternative part to the Multipart Mixed part.
-    #msg_mixed.add(msg_body)
+    msg_mixed.add(msg_body)
 
     # Add the attachment to the Multipart Mixed part.
     msg_mixed.attach(file, 'filename' => attachment)
