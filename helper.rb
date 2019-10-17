@@ -8,69 +8,35 @@ module Helper
   FILE_TO_DELETE = Time.now.strftime("%m-%d-%Y")
   
   def self.send_email(subject, message, attachment)
-    # This address must be verified with Amazon SES.
     sender = "admin@trln.org"
     sendername = "TRLN Admin"
-
-    # Replace recipient@example.com with a "To" address. If your account 
-    # is still in the sandbox, this address must be verified.
     recipient = "evgeniia.kazymova@duke.edu"
 
-    # Specify a configuration set. 
     configsetname = "ConfigSet"
-   
-    # Replace us-west-2 with the AWS Region you're using for Amazon SES.
     awsregion = "us-east-1"
-
-    # The subject line for the email.
-    #subject = "Updates"
-
-    # The full path to the file that will be attached to the email.
-    #attachment = "/home/ec2-user/data/update/update-10-17-2019.mrc"
-
-    # The email body for recipients with non-HTML email clients.  
+  
     textbody = "#{message}"
-
-
-    # Create a new MIME text object that contains the base64-encoded content of the
-    # file that will be attached to the message.
-    file = MIME::Application.new(Base64::encode64(open(attachment).read))
-
-    # Specify that the file is a base64-encoded attachment to ensure that the 
-    # receiving client handles it correctly. 
-    file.transfer_encoding = 'base64'
-    file.disposition = 'attachment'
-
-    # Create a MIME Multipart Mixed object. This object will contain the body of the
-    # email and the attachment.
+    
     msg_mixed = MIME::Multipart::Mixed.new
-
-    # Create a MIME Multipart Alternative object. This object will contain both the
-    # HTML and plain text versions of the email.
     msg_body = MIME::Multipart::Alternative.new
-
-    # Add the plain text and HTML content to the Multipart Alternative part.
     msg_body.add(MIME::Text.new(textbody,'plain'))
-
-
-    # Add the Multipart Alternative part to the Multipart Mixed part.
     msg_mixed.add(msg_body)
+    
+    if(File.exist?(attachment)) 
+      file = MIME::Application.new(Base64::encode64(open(attachment).read))
+      file.transfer_encoding = 'base64'
+      file.disposition = 'attachment'
+      msg_mixed.attach(file, 'filename' => attachment)
+    end
 
-    # Add the attachment to the Multipart Mixed part.
-    msg_mixed.attach(file, 'filename' => attachment)
-
-    # Create a new Mail object that contains the entire Multipart Mixed object. 
-    # This object also contains the message headers.
     msg = MIME::Mail.new(msg_mixed)
     msg.to = { recipient => nil }
     msg.from = { sender => sendername }
     msg.subject = subject
     msg.headers.set('X-SES-CONFIGURATION-SET',configsetname)
 
-    # Create a new SES resource and specify a region
     ses = Aws::SES::Client.new(region: awsregion)
 
-    # Try to send the email.
     begin
  
     # Provide the contents of the email.

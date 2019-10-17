@@ -22,7 +22,7 @@ processes.each do |key, value|
       attachment = "#{Helper::PATH}/data/update/add-#{Helper::FILE_TO_UPDATE}.json"
     when "delete"
       attachment = "#{Helper::PATH}/data/delete/delete-#{Helper::FILE_TO_DELETE}.json"
-    end
+  end
   Helper.send_email(subject = "NCCU #{key} log", message, attachment)
 end
 
