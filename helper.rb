@@ -7,7 +7,7 @@ module Helper
   FILE_TO_UPDATE = Time.now.strftime("%m-%d-%Y")
   FILE_TO_DELETE = Time.now.strftime("%m-%d-%Y")
   
-  def self.send_email(subject, message, attachment)
+  def self.send_email(subject, message, attachments)
     sender = "admin@trln.org"
     sendername = "TRLN Admin"
     recipient = "evgeniia.kazymova@duke.edu"
@@ -22,12 +22,14 @@ module Helper
     msg_body.add(MIME::Text.new(textbody,'plain'))
     msg_mixed.add(msg_body)
     
-    if(File.exist?(attachment)) 
-      file = MIME::Application.new(Base64::encode64(open(attachment).read))
-      file.transfer_encoding = 'base64'
-      file.disposition = 'attachment'
-      msg_mixed.attach(file, 'filename' => attachment)
-    end
+    attachments.each do |attachment|
+      if(File.exist?(attachment)) 
+        file = MIME::Application.new(Base64::encode64(open(attachment).read))
+        file.transfer_encoding = 'base64'
+        file.disposition = 'attachment' + attachment
+        msg_mixed.attach(file, 'filename' => attachment)
+      end
+    end  
 
     msg = MIME::Mail.new(msg_mixed)
     msg.to = { recipient => nil }
