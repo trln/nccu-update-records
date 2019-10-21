@@ -20,6 +20,8 @@ processes.each do |key, value|
   case key
     when "title"
       attachments = ["#{Helper::PATH}/data/update/add-title-#{Helper::FILE_TO_UPDATE}.json", "#{Helper::PATH}/data/update/update-title-#{Helper::FILE_TO_UPDATE}.mrc",]
+    when "circulation"
+      attachments = ["#{Helper::PATH}/data/update/add-circulation-#{Helper::FILE_TO_UPDATE}.json", "#{Helper::PATH}/data/update/update-circulation-#{Helper::FILE_TO_UPDATE}.mrc",]
     when "delete"
       attachments = ["#{Helper::PATH}/data/delete/delete-#{Helper::FILE_TO_DELETE}.json"]
   end
