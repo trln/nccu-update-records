@@ -6,7 +6,7 @@ DELETE_LOG_PATH = "#{Helper::PATH}/cronlogs/delete_#{Helper::FILE_TO_DELETE}.log
 #file_to_update = "#{Helper::PATH}/data/update/add-#{Helper::FILE_TO_UPDATE}.json"
 #file_to_delete = "#{Helper::PATH}/data/delete/delete-#{Helper::FILE_TO_DELETE}.json"
 
-processes = {"update" => UPDATE_LOG_PATH, "delete" => DELETE_LOG_PATH}
+processes = {"title" => UPDATE_LOG_PATH, "circualtion" => UPDATE_LOG_PATH, "delete" => DELETE_LOG_PATH}
 
 def create_message(process, path)
 	if File.exists?(path)
@@ -18,8 +18,8 @@ end
 processes.each do |key, value|
   message = create_message(key, value)
   case key
-    when "update"
-      attachments = ["#{Helper::PATH}/data/update/add-#{Helper::FILE_TO_UPDATE}.json", "#{Helper::PATH}/data/update/update-#{Helper::FILE_TO_UPDATE}.mrc",]
+    when "title"
+      attachments = ["#{Helper::PATH}/data/update/add-title-#{Helper::FILE_TO_UPDATE}.json", "#{Helper::PATH}/data/update/update-title-#{Helper::FILE_TO_UPDATE}.mrc",]
     when "delete"
       attachments = ["#{Helper::PATH}/data/delete/delete-#{Helper::FILE_TO_DELETE}.json"]
   end
