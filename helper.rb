@@ -10,7 +10,7 @@ module Helper
   def self.send_email(subject, message, attachments)
     sender = "admin@trln.org"
     sendername = "TRLN Admin"
-    recipient = "evgeniia.kazymova@duke.edu"
+    recipient = "evgeniia.kazymova@duke.edu, admin@trln.org"
 
     configsetname = "ConfigSet"
     awsregion = "us-east-1"

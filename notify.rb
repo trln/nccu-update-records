@@ -3,9 +3,6 @@ require_relative "./helper.rb"
 UPDATE_LOG_PATH = "#{Helper::PATH}/cronlogs/update_#{Helper::FILE_TO_UPDATE}.log"
 DELETE_LOG_PATH = "#{Helper::PATH}/cronlogs/delete_#{Helper::FILE_TO_DELETE}.log"
 
-#file_to_update = "#{Helper::PATH}/data/update/add-#{Helper::FILE_TO_UPDATE}.json"
-#file_to_delete = "#{Helper::PATH}/data/delete/delete-#{Helper::FILE_TO_DELETE}.json"
-
 processes = {"update" => UPDATE_LOG_PATH, "delete" => DELETE_LOG_PATH}
 
 def create_message(process, path)
