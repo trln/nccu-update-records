@@ -8,9 +8,9 @@ module Helper
   FILE_TO_DELETE = Time.now.strftime("%m-%d-%Y")
   
   def self.send_email(subject, message, attachments)
-    sender = "admin@trln.org"
+    sender = ENV['ADMIN_EMAIL']
     sendername = "TRLN Admin"
-    recipient = "evgeniia.kazymova@duke.edu, admin@trln.org"
+    recipient = ENV['ADMIN_EMAIL']
 
     configsetname = "ConfigSet"
     awsregion = "us-east-1"
