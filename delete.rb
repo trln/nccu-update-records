@@ -1,7 +1,7 @@
 #run once a day
 require_relative "./helper.rb"
 
-delete_path = "#{Helper::PATH}/data/delete/delete-#{Helper::FILE_TO_DELETE}.json"
+delete_path = "#{Helper::PATH}/data/delete/delete-#{Helper::TIMESTAMP}.json"
 
 if File.exist?(delete_path)
   #clean up the array: remove a vertical bar
