@@ -3,9 +3,10 @@ require 'mime'    #gem install mime
 require 'base64'  #standard library
 
 module Helper
+  #global variables
   PATH = "/home/ec2-user"
-  FILE_TO_UPDATE = Time.now.strftime("%m-%d-%Y")
-  FILE_TO_DELETE = Time.now.strftime("%m-%d-%Y")
+  TIMESTAMP = Time.now.strftime("%m-%d-%Y")
+  UPDATES = ["new-titles", "circulation-updates", "title-updates"]
   
   def self.send_email(subject, message, attachments)
     sender = ENV['ADMIN_EMAIL']

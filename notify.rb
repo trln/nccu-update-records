@@ -1,7 +1,7 @@
 require_relative "./helper.rb"
 
-UPDATE_LOG_PATH = "#{Helper::PATH}/cronlogs/update_#{Helper::FILE_TO_UPDATE}.log"
-DELETE_LOG_PATH = "#{Helper::PATH}/cronlogs/delete_#{Helper::FILE_TO_DELETE}.log"
+UPDATE_LOG_PATH = "#{Helper::PATH}/cronlogs/update_#{Helper::TIMESTAMP}.log"
+DELETE_LOG_PATH = "#{Helper::PATH}/cronlogs/delete_#{Helper::TIMESTAMP}.log"
 
 processes = {"update" => UPDATE_LOG_PATH, "delete" => DELETE_LOG_PATH}
 
@@ -14,14 +14,14 @@ end
 
 processes.each do |key, value|
   message = create_message(key, value)
+  attachments =[]
   case key
     when "update"
-      attachments = ["#{Helper::PATH}/data/update/add-title-#{Helper::FILE_TO_UPDATE}.json", 
-                     "#{Helper::PATH}/data/update/update-title-#{Helper::FILE_TO_UPDATE}.mrc",
-                     "#{Helper::PATH}/data/update/add-circulation-#{Helper::FILE_TO_UPDATE}.json", 
-                     "#{Helper::PATH}/data/update/update-circulation-#{Helper::FILE_TO_UPDATE}.mrc"]
+      Helper::UPDATES.each do |item|
+        attachments << "#{Helper::PATH}/data/update/add-#{item}-#{Helper::TIMESTAMP}.json"
+      end               
     when "delete"
-      attachments = ["#{Helper::PATH}/data/delete/delete-#{Helper::FILE_TO_DELETE}.json"]
+      attachments = ["#{Helper::PATH}/data/delete/delete-#{Helper::TIMESTAMP}.json"]
   end
   Helper.send_email(subject = "NCCU #{key} log", message, attachments)
 end
