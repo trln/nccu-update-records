@@ -14,6 +14,6 @@ files.each do |file|
 end
 
 if all_files_exist == true
-  message = "The Reshare updates are completed. Find the latest  updates here: https://pod.stanford.edu/organizations/nccu/streams/2023-02-20-production"
+  message = "The Reshare updates are completed. Find the latest updates here: https://pod.stanford.edu/organizations/nccu/streams/2023-02-20-production"
   Helper.send_email(subject = "Reshare updates", message, attachments=[])
 end
